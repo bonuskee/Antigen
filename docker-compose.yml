@@ -1,0 +1,22 @@
+version: '3.8'
+
+# INSTRUCTIONS FOR PROFESSOR:
+# 1. For Mac users (Apple Silicon):
+#    docker pull --platform linux/amd64 likesloth/atk:v3
+# 2. For non-Mac users:
+#    docker pull likesloth/atk:v3
+# 3. Run the application:
+#    docker compose up -d
+#
+# Note: This application connects to a Neon PostgreSQL database
+# The database connection is already configured in the .env.professor file
+
+services:
+  web:
+    # The image supports both AMD64 and ARM64 architectures
+    image: likesloth/atk:v3
+    restart: always
+    ports:
+      - "3001:3000"
+    env_file:
+      - .env.professor
